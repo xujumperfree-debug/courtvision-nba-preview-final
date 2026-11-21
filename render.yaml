@@ -6,7 +6,7 @@ services:
     name: courtvision-nba-preview-final
     buildCommand: node check.mjs
     staticPublishPath: dist
-    autoDeployTrigger: off
+    autoDeployTrigger: commit
     envVars:
       - key: SKIP_INSTALL_DEPS
         value: 'true'
