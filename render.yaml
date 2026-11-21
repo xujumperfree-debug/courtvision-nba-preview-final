@@ -1,0 +1,25 @@
+previews:
+  generation: off
+services:
+  - type: web
+    runtime: static
+    name: courtvision-nba-preview-final
+    buildCommand: node check.mjs
+    staticPublishPath: dist
+    autoDeployTrigger: off
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: 'true'
+    headers:
+      - path: /data/*
+        name: Cache-Control
+        value: public, max-age=300, must-revalidate
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=3600, must-revalidate
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
